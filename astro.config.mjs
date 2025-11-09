@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://marcelofort.dev',
+  base: '/PaxinaWeb',
   integrations: [
     tailwind(),
     sitemap()
