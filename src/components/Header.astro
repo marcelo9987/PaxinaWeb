@@ -17,8 +17,12 @@ const locales = [
 ];
 
 const getLocalePath = (targetLocale: string) => {
-  if (targetLocale === 'gl') return '/';
-  return `/${targetLocale}`;
+  const base = import.meta.env.BASE_URL;
+  const separator = base === '/' ? '' : '/';
+  if (targetLocale === 'gl') {
+    return base === '/' ? base : `${base}/`;
+  }
+  return `${base}${separator}${targetLocale}`;
 };
 ---
 
