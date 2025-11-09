@@ -1,0 +1,157 @@
+---
+import { translations, type Locale } from '../i18n/translations';
+import NetworkCanvas from './NetworkCanvas.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = translations[locale];
+---
+
+<section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-900">
+  <!-- Network canvas background -->
+  <NetworkCanvas />
+  
+  <!-- Scanlines effect -->
+  <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.1) 3px);"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-5xl mx-auto">
+      <!-- Welcome card - friendly and visual -->
+      <div class="bg-gradient-to-br from-slate-900/95 via-black/95 to-slate-900/95 backdrop-blur-md border-2 border-green-500/50 shadow-[0_0_40px_rgba(0,255,0,0.3)] rounded-2xl p-8 md:p-12">
+        <!-- Friendly header -->
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-green-500/30">
+          <div class="flex items-center space-x-3">
+            <div class="flex space-x-2">
+              <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+            </div>
+            <span class="text-green-400 text-sm font-mono">✨ Bienvenido / Welcome / Benvido</span>
+          </div>
+        </div>
+        
+        <!-- Main content with visual elements -->
+        <div class="space-y-6">
+          <!-- Animated title -->
+          <div class="typing-animation" style="animation-delay: 0.3s;">
+            <h1 class="text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-green-400 via-cyan-400 to-green-300 bg-clip-text text-transparent">
+              {t.hero.title}
+            </h1>
+          </div>
+          
+          <!-- Subtitle with icon -->
+          <div class="typing-animation" style="animation-delay: 0.8s;">
+            <div class="flex items-center space-x-3 mb-4">
+              <span class="text-3xl">👨‍💻</span>
+              <p class="text-xl md:text-2xl text-green-300 font-medium">
+                {t.hero.subtitle}
+              </p>
+            </div>
+          </div>
+          
+          <!-- Description in friendly format -->
+          <div class="typing-animation" style="animation-delay: 1.3s;">
+            <div class="bg-slate-800/50 border-l-4 border-green-500 rounded-r-lg p-4 mb-6">
+              <p class="text-lg md:text-xl text-green-200 leading-relaxed">
+                {t.hero.description}
+              </p>
+            </div>
+          </div>
+          
+          <!-- Quick info cards -->
+          <div class="typing-animation grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" style="animation-delay: 1.8s;">
+            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+              <div class="text-2xl mb-2">🌍</div>
+              <div class="text-green-300 text-sm font-medium">4 Idiomas</div>
+            </div>
+            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+              <div class="text-2xl mb-2">💻</div>
+              <div class="text-green-300 text-sm font-medium">10+ Tecnologías</div>
+            </div>
+            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+              <div class="text-2xl mb-2">🚀</div>
+              <div class="text-green-300 text-sm font-medium">Proxectos</div>
+            </div>
+          </div>
+          
+          <!-- CTA buttons -->
+          <div class="typing-animation flex flex-col sm:flex-row gap-4" style="animation-delay: 2.3s;">
+            <a
+              href={`#projects`}
+              class="flex-1 px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-bold rounded-lg border-2 border-green-400 hover:from-green-400 hover:to-cyan-400 hover:shadow-[0_0_25px_rgba(0,255,0,0.8)] hover:scale-105 transition-all duration-300 text-center text-lg"
+            >
+              🚀 {t.hero.cta}
+            </a>
+            <a
+              href={`#about`}
+              class="flex-1 px-8 py-4 bg-slate-800 text-green-300 font-bold rounded-lg border-2 border-green-500/50 hover:border-green-500 hover:bg-slate-700 hover:scale-105 transition-all duration-300 text-center text-lg"
+            >
+              📖 {locale === 'gl' ? 'Sobre min' : locale === 'es' ? 'Sobre mí' : locale === 'en' ? 'About me' : 'Sobre mim'}
+            </a>
+          </div>
+          
+          <!-- Scroll indicator -->
+          <div class="typing-animation text-center mt-8" style="animation-delay: 2.8s;">
+            <div class="text-green-400 text-sm mb-2">
+              {locale === 'gl' && 'Desliza para explorar ↓'}
+              {locale === 'es' && 'Desliza para explorar ↓'}
+              {locale === 'en' && 'Scroll to explore ↓'}
+              {locale === 'pt' && 'Role para explorar ↓'}
+            </div>
+            <div class="animate-bounce text-green-500 text-2xl">↓</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Subtle glow effect -->
+  <div class="absolute inset-0 pointer-events-none opacity-10" style="background: radial-gradient(ellipse at center, rgba(0, 255, 0, 0.2) 0%, transparent 70%);"></div>
+</section>
+
+<style>
+  @keyframes typing {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .typing-animation {
+    opacity: 0;
+    animation: typing 0.5s ease-in forwards;
+  }
+  
+  /* CRT scanline effect */
+  @keyframes scanline {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  
+  /* Glitch effect */
+  @keyframes glitch {
+    0%, 100% {
+      text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+    25% {
+      text-shadow: -2px 0 5px rgba(255, 0, 0, 0.5), 2px 0 5px rgba(0, 0, 255, 0.5);
+    }
+    50% {
+      text-shadow: 2px 0 5px rgba(255, 0, 0, 0.5), -2px 0 5px rgba(0, 0, 255, 0.5);
+    }
+    75% {
+      text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+  }
+</style>

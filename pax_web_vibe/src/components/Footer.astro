@@ -1,0 +1,20 @@
+---
+import { translations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = translations[locale];
+---
+
+<footer class="bg-slate-900 text-white py-8 mt-20">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <p class="text-slate-400">{t.footer.text}</p>
+      <p class="text-slate-500 text-sm mt-2">© {new Date().getFullYear()} Marcelo Fort Muñoz</p>
+    </div>
+  </div>
+</footer>
+
