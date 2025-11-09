@@ -1,0 +1,37 @@
+---
+import { translations, type Locale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = translations[locale];
+---
+
+<section id="about" class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent font-mono">
+          &gt; {t.about.title}
+        </h2>
+      </div>
+      
+      <div class="bg-black border-2 border-green-500/50 rounded-lg p-8 md:p-12 shadow-[0_0_30px_rgba(0,255,0,0.3)]">
+        <div class="text-green-400 font-mono text-base md:text-lg leading-relaxed">
+          <p class="mb-4">
+            <span class="text-green-500">$</span> whoami
+          </p>
+          <p class="text-green-300 mb-4">
+            {t.about.description}
+          </p>
+          <p class="mt-4">
+            <span class="text-green-500">$</span> <span class="animate-pulse">_</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

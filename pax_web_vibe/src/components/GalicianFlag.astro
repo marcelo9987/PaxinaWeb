@@ -1,0 +1,35 @@
+---
+interface Props {
+  class?: string;
+  size?: number;
+}
+
+const { class: className = '', size = 24 } = Astro.props;
+---
+
+<svg 
+  viewBox="0 0 3 2" 
+  width={size} 
+  height={size * 2/3}
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="Bandeira de Galicia"
+  style="border: 1px solid rgba(0,0,0,0.1); border-radius: 2px;"
+>
+  <!-- Fondo branco -->
+  <rect width="3" height="2" fill="#FFFFFF"/>
+  <!-- Banda diagonal azul (estreleira) -->
+  <!-- A banda vai desde o canto superior esquerdo ao inferior dereito -->
+  <line x1="0" y1="0" x2="3" y2="2" stroke="#0066CC" stroke-width="0.5" stroke-linecap="round"/>
+  <!-- Engadimos unha segunda liña paralela para facer a banda máis visible -->
+  <line x1="0" y1="0.15" x2="3" y2="1.85" stroke="#0066CC" stroke-width="0.3" stroke-linecap="round"/>
+  <!-- Estrela vermella no centro -->
+  <g transform="translate(1.5, 1) scale(0.5)">
+    <!-- Estrela de 5 puntas -->
+    <path 
+      d="M 0,-2 L 0.588,-0.588 L 1.91,-0.588 L 0.951,0.146 L 1.545,1.545 L 0,0.588 L -1.545,1.545 L -0.951,0.146 L -1.91,-0.588 L -0.588,-0.588 Z"
+      fill="#DC143C"
+    />
+  </g>
+</svg>
+

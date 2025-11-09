@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Skills from '../../components/Skills.astro';
+import Languages from '../../components/Languages.astro';
+import Projects from '../../components/Projects.astro';
+import Contact from '../../components/Contact.astro';
+import { translations } from '../../i18n/translations';
+
+const locale = 'es';
+const t = translations[locale];
+---
+
+<Layout title={`${t.hero.title} - ${t.hero.subtitle}`} description={t.hero.description} locale={locale}>
+  <Hero locale={locale} />
+  <About locale={locale} />
+  <Skills locale={locale} />
+  <Languages locale={locale} />
+  <Projects locale={locale} />
+  <Contact locale={locale} />
+</Layout>
+
