@@ -24,12 +24,7 @@ const t = translations[locale];
                 <!-- Friendly header -->
                 <div class="flex items-center justify-between mb-6 pb-4 border-b border-green-500/30">
                     <div class="flex items-center space-x-3">
-                        <div class="flex space-x-2">
-                            <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-                        </div>
-                        <span class="text-green-400 text-sm font-mono">✨ Bienvenido / Welcome / Benvido</span>
+                        <span class="text-green-400 text-sm font-mono">✨ Benvido / Bienvenido / Welcome</span>
                     </div>
 
                     <!-- Toggle button for console / presentation -->
@@ -85,9 +80,9 @@ const t = translations[locale];
                             <div class="text-green-300 text-sm font-medium">4 Idiomas</div>
                         </div>
                         <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
-                            <div class="text-2xl mb-2">💻</div>
-                            <div class="text-green-300 text-sm font-medium">10+ Tecnologías</div>
-                        </div>
+                             <div class="text-2xl mb-2">💻</div>
+                             <div class="text-green-300 text-sm font-medium">10+ Tecnologías</div>
+                         </div>
                         <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
                             <div class="text-2xl mb-2">🚀</div>
                             <div class="text-green-300 text-sm font-medium">Proxectos</div>
@@ -230,6 +225,8 @@ const t = translations[locale];
 
      // Manage cancellation of running animation
      let runId = 0;
+     // Timer handle for auto-switching from console -> presentation
+     let consoleAutoSwitchTimer = null;
 
      // Make sure console content area has explicit color (in case tailwind classes differ)
      contentEl.classList.add('text-green-400');
@@ -242,6 +239,89 @@ const t = translations[locale];
      const scrollToBottom = () => {
          consoleEl.scrollTop = consoleEl.scrollHeight;
      };
+
+     // Utility: restart CSS animations for presentation elements so they reveal again
+     const restartPresentationAnimations = () => {
+         if (!presentationContainer) return;
+         const items = presentationContainer.querySelectorAll('.typing-animation');
+         items.forEach((el) => {
+             try {
+                 // clear inline animation to force reflow and restart
+                 el.style.animation = 'none';
+                 // force reflow
+                 // eslint-disable-next-line no-unused-expressions
+                 el.offsetWidth;
+                 // remove the override so the CSS animation runs again
+                 el.style.animation = '';
+             } catch (e) {
+                 // ignore errors in older browsers
+             }
+         });
+     };
+
+     // Start auto-switch: when the console view is active, after `seconds` seconds switch to presentation
+    const clearConsoleAutoSwitch = () => {
+         if (consoleAutoSwitchTimer) {
+            try { clearTimeout(consoleAutoSwitchTimer); } catch(e) {}
+            try { clearInterval(consoleAutoSwitchTimer); } catch(e) {}
+            consoleAutoSwitchTimer = null;
+         }
+         // remove any visible warning in the console output
+         try {
+             const warn = document.getElementById('console-warn');
+             if (warn && warn.parentNode === contentEl) warn.remove();
+         } catch(e) {}
+     };
+
+     // Start a visible warning+countdown inside the console output after the console presentation finishes
+     const startConsoleEndCountdown = (seconds = 7) => {
+        clearConsoleAutoSwitch();
+        if (!isConsoleView) return;
+        // append a warning line to the console content area
+        const warn = document.createElement('div');
+        warn.id = 'console-warn';
+        warn.style.marginTop = '8px';
+        warn.style.fontFamily = 'monospace';
+        warn.innerHTML = `<span style="color:#ffcc00; font-weight:700;">[WARNING]</span> Switching to presentation in <span id="console-warn-count">${seconds}</span>s`;
+        contentEl.appendChild(warn);
+        // ensure visible
+        consoleEl.scrollTop = consoleEl.scrollHeight;
+
+        let remaining = Number(seconds);
+        consoleAutoSwitchTimer = setInterval(() => {
+            // if console view was cancelled, stop
+            if (!isConsoleView) {
+                clearConsoleAutoSwitch();
+                return;
+            }
+            remaining -= 1;
+            const numEl = document.getElementById('console-warn-count');
+            if (numEl) numEl.textContent = String(Math.max(0, remaining));
+            consoleEl.scrollTop = consoleEl.scrollHeight;
+            if (remaining <= 0) {
+                clearConsoleAutoSwitch();
+                // cancel any running boot sequence and switch to presentation
+                runId += 1;
+                isConsoleView = false;
+                localStorage.setItem(storageKey, 'presentation');
+                if (consoleEl) {
+                    consoleEl.classList.add('hidden');
+                    consoleEl.style.display = 'none';
+                }
+                if (presentationContainer) {
+                    presentationContainer.classList.remove('hidden');
+                    presentationContainer.style.display = '';
+                    try { presentationContainer.scrollIntoView({ behavior: 'smooth' }); } catch(e) {}
+                    // restart reveal animations so the presentation elements appear sequentially
+                    setTimeout(() => restartPresentationAnimations(), 60);
+                 }
+                if (toggleBtn) {
+                    toggleBtn.setAttribute('aria-pressed', 'false');
+                    try { toggleBtn.textContent = 'Console'; } catch(e) {}
+                }
+            }
+        }, 1000);
+    };
 
      // Type a line character-by-character
      const typeLine = async (text, speed = 30, localRunId) => {
@@ -323,6 +403,8 @@ const t = translations[locale];
          // After boot sequence, show presentation welcome info faster
          if (runId === localRunId) {
              await showPresentationInConsole(presentation, localRunId);
+             // when the console presentation finishes, show a warning + 7s countdown before switching
+             if (isConsoleView) startConsoleEndCountdown(7);
          }
 
          cursorEl.classList.remove('animate-blink');
@@ -374,7 +456,16 @@ const t = translations[locale];
              // update label for clarity
              try { toggleBtn.textContent = isConsoleView ? 'Presentation' : 'Console'; } catch(e) {}
              toggleBtn.setAttribute('aria-pressed', String(isConsoleView));
-             if (isConsoleView) startConsole();
+             if (isConsoleView) {
+                startConsole();
+                // when entering console, ensure any previous countdown cleared
+                clearConsoleAutoSwitch();
+             } else {
+                // entering presentation - cancel any pending countdown
+                clearConsoleAutoSwitch();
+                // restart reveal animations when switching back to presentation
+                setTimeout(() => restartPresentationAnimations(), 60);
+             }
          });
      }
 
@@ -383,6 +474,8 @@ const t = translations[locale];
          // cancel existing run and restart
          runId += 1;
          startConsole();
+         // ensure any pending countdown cleared (we'll start it when sequence finishes)
+         clearConsoleAutoSwitch();
      });
 
      if (skipBtn) skipBtn.addEventListener('click', () => {
@@ -397,6 +490,10 @@ const t = translations[locale];
              presentationContainer.classList.remove('hidden');
              presentationContainer.style.display = '';
          }
+         // ensure countdown timer cleared when user skips
+         clearConsoleAutoSwitch();
+         // restart presentation reveal animations immediately when user skips to presentation
+         setTimeout(() => restartPresentationAnimations(), 60);
          if (toggleBtn) {
              toggleBtn.setAttribute('aria-pressed', 'false');
              try { toggleBtn.textContent = 'Console'; } catch(e) {}
@@ -404,7 +501,14 @@ const t = translations[locale];
      });
 
      // Start automatically if stored preference is console
-     if (isConsoleView) startConsole();
+     if (isConsoleView) {
+         startConsole();
+         // any countdown will start only after the console presentation finishes
+     } else {
+        // If presentation is active on load, trigger the reveal animations
+        setTimeout(() => restartPresentationAnimations(), 120);
+    }
+
  })();
  </script>
 
