@@ -31,6 +31,9 @@ coverage
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# Jetbrain editors configuration files
+.idea/
+
 # node-waf configuration
 .lock-wscript
 
@@ -93,7 +96,6 @@ dist
 
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 
 # Sveltekit cache directory
 .svelte-kit/
