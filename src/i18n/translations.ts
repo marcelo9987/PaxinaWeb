@@ -40,7 +40,9 @@ export const translations = {
       github: 'GitHub'
     },
     footer: {
-      text: 'Feito con ❤️ usando Astro e Tailwind CSS'
+      text: 'Feito con ❤️ usando Astro e Tailwind CSS',
+      gnu: 'Visitar GNU',
+      support: 'Apoia o software libre!'
     }
   },
   es: {
@@ -84,7 +86,9 @@ export const translations = {
       github: 'GitHub'
     },
     footer: {
-      text: 'Hecho con ❤️ usando Astro y Tailwind CSS'
+      text: 'Hecho con ❤️ usando Astro y Tailwind CSS',
+      gnu: 'Visitar GNU',
+      support: '¡Apoya el software libre!'
     }
   },
   en: {
@@ -128,7 +132,9 @@ export const translations = {
       github: 'GitHub'
     },
     footer: {
-      text: 'Made with ❤️ using Astro and Tailwind CSS'
+      text: 'Made with ❤️ using Astro and Tailwind CSS',
+      gnu: 'Visit GNU',
+      support: 'Support free software!'
     }
   },
   pt: {
@@ -172,11 +178,11 @@ export const translations = {
       github: 'GitHub'
     },
     footer: {
-      text: 'Feito com ❤️ usando Astro e Tailwind CSS'
+      text: 'Feito com ❤️ usando Astro e Tailwind CSS',
+      gnu: 'Visitar GNU',
+      support: 'Apoia o software livre!'
     }
   }
 } as const;
 
 export type Locale = keyof typeof translations;
-export type TranslationKey = keyof typeof translations.gl;
-

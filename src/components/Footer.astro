@@ -11,10 +11,32 @@ const t = translations[locale];
 
 <footer class="bg-slate-900 text-white py-8 mt-20">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <p class="text-slate-400">{t.footer.text}</p>
-      <p class="text-slate-500 text-sm mt-2">© {new Date().getFullYear()} Marcelo Fort Muñoz</p>
+    <div class="flex flex-col md:flex-row items-center md:items-start md:justify-between">
+      <!-- Centered text (kept in the middle) -->
+      <div class="text-center md:flex-1 mt-16">
+        <p class="text-slate-400">Hecho con ❤️ usando Astro y Tailwind CSS  © 2025 Marcelo Fort Muñoz</p>
+      </div>
+
+      <!-- Right: local GNU image + support caption (clickable) -->
+      <div class="mt-4 md:mt-0 md:ml-6 flex-shrink-0">
+        <a
+          href="https://www.gnu.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block text-sky-400 hover:opacity-90"
+          aria-label={t.footer.gnu}
+          title="The GNU Project"
+        >
+          <img
+            src="/PaxinaWeb/images/gnu-head.jpg"
+            alt="GNU"
+            width="276"
+            height="261"
+            class="w-24 h-24 md:w-36 md:h-36 object-contain"
+          />
+          <div class="text-sm text-slate-200 mt-2 text-center">{t.footer.support}</div>
+        </a>
+      </div>
     </div>
   </div>
 </footer>
-

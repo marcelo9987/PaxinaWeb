@@ -80,5 +80,5 @@ Edita `src/components/Contact.astro` e actualiza os enlaces de email, LinkedIn e
 
 ## 📝 Licenza
 
-MIT
+GNU GENERAL PUBLIC LICENSE
 
