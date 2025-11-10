@@ -3,7 +3,7 @@ import { translations, type Locale } from '../i18n/translations';
 import NetworkCanvas from './NetworkCanvas.astro';
 
 interface Props {
-  locale: Locale;
+    locale: Locale;
 }
 
 const { locale } = Astro.props;
@@ -11,147 +11,412 @@ const t = translations[locale];
 ---
 
 <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-black to-slate-900">
-  <!-- Network canvas background -->
-  <NetworkCanvas />
-  
-  <!-- Scanlines effect -->
-  <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.1) 3px);"></div>
-  
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="max-w-5xl mx-auto">
-      <!-- Welcome card - friendly and visual -->
-      <div class="bg-gradient-to-br from-slate-900/95 via-black/95 to-slate-900/95 backdrop-blur-md border-2 border-green-500/50 shadow-[0_0_40px_rgba(0,255,0,0.3)] rounded-2xl p-8 md:p-12">
-        <!-- Friendly header -->
-        <div class="flex items-center justify-between mb-6 pb-4 border-b border-green-500/30">
-          <div class="flex items-center space-x-3">
-            <div class="flex space-x-2">
-              <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
-            </div>
-            <span class="text-green-400 text-sm font-mono">✨ Bienvenido / Welcome / Benvido</span>
-          </div>
-        </div>
-        
-        <!-- Main content with visual elements -->
-        <div class="space-y-6">
-          <!-- Animated title -->
-          <div class="typing-animation" style="animation-delay: 0.3s;">
-            <h1 class="text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-green-400 via-cyan-400 to-green-300 bg-clip-text text-transparent">
-              {t.hero.title}
-            </h1>
-          </div>
-          
-          <!-- Subtitle with icon -->
-          <div class="typing-animation" style="animation-delay: 0.8s;">
-            <div class="flex items-center space-x-3 mb-4">
-              <span class="text-3xl">👨‍💻</span>
-              <p class="text-xl md:text-2xl text-green-300 font-medium">
-                {t.hero.subtitle}
-              </p>
-            </div>
-          </div>
-          
-          <!-- Description in friendly format -->
-          <div class="typing-animation" style="animation-delay: 1.3s;">
-            <div class="bg-slate-800/50 border-l-4 border-green-500 rounded-r-lg p-4 mb-6">
-              <p class="text-lg md:text-xl text-green-200 leading-relaxed">
-                {t.hero.description}
-              </p>
-            </div>
-          </div>
-          
-          <!-- Quick info cards -->
-          <div class="typing-animation grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" style="animation-delay: 1.8s;">
-            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
-              <div class="text-2xl mb-2">🌍</div>
-              <div class="text-green-300 text-sm font-medium">4 Idiomas</div>
-            </div>
-            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
-              <div class="text-2xl mb-2">💻</div>
-              <div class="text-green-300 text-sm font-medium">10+ Tecnologías</div>
-            </div>
-            <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
-              <div class="text-2xl mb-2">🚀</div>
-              <div class="text-green-300 text-sm font-medium">Proxectos</div>
-            </div>
-          </div>
-          
-          <!-- CTA buttons -->
-          <div class="typing-animation flex flex-col sm:flex-row gap-4" style="animation-delay: 2.3s;">
-            <a
-              href={`#projects`}
-              class="flex-1 px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-bold rounded-lg border-2 border-green-400 hover:from-green-400 hover:to-cyan-400 hover:shadow-[0_0_25px_rgba(0,255,0,0.8)] hover:scale-105 transition-all duration-300 text-center text-lg"
-            >
-              🚀 {t.hero.cta}
-            </a>
-            <a
-              href={`#about`}
-              class="flex-1 px-8 py-4 bg-slate-800 text-green-300 font-bold rounded-lg border-2 border-green-500/50 hover:border-green-500 hover:bg-slate-700 hover:scale-105 transition-all duration-300 text-center text-lg"
-            >
-              📖 {locale === 'gl' ? 'Sobre min' : locale === 'es' ? 'Sobre mí' : locale === 'en' ? 'About me' : 'Sobre mim'}
-            </a>
-          </div>
-          
-          <!-- Scroll indicator -->
-          <div class="typing-animation text-center mt-8" style="animation-delay: 2.8s;">
-            <div class="text-green-400 text-sm mb-2">
-              {locale === 'gl' && 'Desliza para explorar ↓'}
-              {locale === 'es' && 'Desliza para explorar ↓'}
-              {locale === 'en' && 'Scroll to explore ↓'}
-              {locale === 'pt' && 'Role para explorar ↓'}
-            </div>
-            <div class="animate-bounce text-green-500 text-2xl">↓</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Subtle glow effect -->
-  <div class="absolute inset-0 pointer-events-none opacity-10" style="background: radial-gradient(ellipse at center, rgba(0, 255, 0, 0.2) 0%, transparent 70%);"></div>
-</section>
+    <!-- Network canvas background -->
+    <NetworkCanvas />
 
-<style>
-  @keyframes typing {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
+    <!-- Scanlines effect -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(0deg, rgba(0, 255, 0, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 255, 0, 0.1) 3px);"></div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-5xl mx-auto">
+            <!-- Welcome card - friendly and visual -->
+            <div class="bg-gradient-to-br from-slate-900/95 via-black/95 to-slate-900/95 backdrop-blur-md border-2 border-green-500/50 shadow-[0_0_40px_rgba(0,255,0,0.3)] rounded-2xl p-8 md:p-12">
+                <!-- Friendly header -->
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-green-500/30">
+                    <div class="flex items-center space-x-3">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+                        </div>
+                        <span class="text-green-400 text-sm font-mono">✨ Bienvenido / Welcome / Benvido</span>
+                    </div>
+
+                    <!-- Toggle button for console / presentation -->
+                    <div class="flex items-center space-x-2">
+                        <button id="hero-toggle" class="text-sm font-mono px-3 py-1 rounded-md bg-slate-800/60 border border-green-500/30 text-green-300 hover:bg-slate-700 transition" aria-pressed="false">Console</button>
+                    </div>
+                </div>
+
+                <!-- Main content with visual elements -->
+                <div class="space-y-6">
+                    <!-- Console / Boot screen (hidden by default) -->
+                    <div id="hero-console" data-presentation={JSON.stringify({ title: t.hero.title, subtitle: t.hero.subtitle, description: t.hero.description, cta: t.hero.cta })} class="hidden bg-black text-green-400 font-mono rounded-lg p-6 min-h-[320px] max-h-[60vh] overflow-auto border border-green-600/30">
+                        <div id="hero-console-content" aria-live="polite"></div>
+                        <div id="hero-console-cursor" class="inline-block ml-1 align-bottom">▌</div>
+                        <div class="mt-4 flex gap-2">
+                            <button id="hero-console-restart" class="text-xs px-2 py-1 rounded bg-green-700/20 border border-green-500 text-green-200">Restart</button>
+                            <button id="hero-console-skip" class="text-xs px-2 py-1 rounded bg-slate-800/30 border border-green-500 text-green-200">Skip</button>
+                        </div>
+                    </div>
+
+                    <!-- Presentation content -->
+                    <div id="hero-presentation">
+                     <!-- Animated title -->
+                     <div class="typing-animation" style="animation-delay: 0.3s;">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-3 bg-gradient-to-r from-green-400 via-cyan-400 to-green-300 bg-clip-text text-transparent">
+                            {t.hero.title}
+                        </h1>
+                    </div>
+
+                    <!-- Subtitle with icon -->
+                    <div class="typing-animation" style="animation-delay: 0.8s;">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <span class="text-3xl">👨‍💻</span>
+                            <p class="text-xl md:text-2xl text-green-300 font-medium">
+                                {t.hero.subtitle}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Description in friendly format -->
+                    <div class="typing-animation" style="animation-delay: 1.3s;">
+                        <div class="bg-slate-800/50 border-l-4 border-green-500 rounded-r-lg p-4 mb-6">
+                            <p class="text-lg md:text-xl text-green-200 leading-relaxed">
+                                {t.hero.description}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quick info cards -->
+                    <div class="typing-animation grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" style="animation-delay: 1.8s;">
+                        <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+                            <div class="text-2xl mb-2">🌍</div>
+                            <div class="text-green-300 text-sm font-medium">4 Idiomas</div>
+                        </div>
+                        <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+                            <div class="text-2xl mb-2">💻</div>
+                            <div class="text-green-300 text-sm font-medium">10+ Tecnologías</div>
+                        </div>
+                        <div class="bg-slate-800/50 border border-green-500/30 rounded-lg p-4 text-center hover:border-green-500 transition-all">
+                            <div class="text-2xl mb-2">🚀</div>
+                            <div class="text-green-300 text-sm font-medium">Proxectos</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA buttons -->
+                    <div class="typing-animation flex flex-col sm:flex-row gap-4" style="animation-delay: 2.3s;">
+                        <a
+                                href={`#projects`}
+                                class="flex-1 px-8 py-4 bg-gradient-to-r from-green-500 to-cyan-500 text-black font-bold rounded-lg border-2 border-green-400 hover:from-green-400 hover:to-cyan-400 hover:shadow-[0_0_25px_rgba(0,255,0,0.8)] hover:scale-105 transition-all duration-300 text-center text-lg"
+                        >
+                            🚀 {t.hero.cta}
+                        </a>
+                        <a
+                                href={`#about`}
+                                class="flex-1 px-8 py-4 bg-slate-800 text-green-300 font-bold rounded-lg border-2 border-green-500/50 hover:border-green-500 hover:bg-slate-700 hover:scale-105 transition-all duration-300 text-center text-lg"
+                        >
+                            📖 {locale === 'gl' ? 'Sobre min' : locale === 'es' ? 'Sobre mí' : locale === 'en' ? 'About me' : 'Sobre mim'}
+                        </a>
+                    </div>
+
+                    <!-- Scroll indicator -->
+                    <div class="typing-animation text-center mt-8" style="animation-delay: 2.8s;">
+                        <div class="text-green-400 text-sm mb-2">
+                            {locale === 'gl' && 'Desliza para explorar ↓'}
+                            {locale === 'es' && 'Desliza para explorar ↓'}
+                            {locale === 'en' && 'Scroll to explore ↓'}
+                            {locale === 'pt' && 'Role para explorar ↓'}
+                        </div>
+                        <div class="animate-bounce text-green-500 text-2xl">↓</div>
+                    </div>
+                    <!-- end #hero-presentation -->
+                 </div>
+             </div>
+         </div>
+     </div>
+    </div>
+
+    <!-- Subtle glow effect -->
+      <div class="absolute inset-0 pointer-events-none opacity-10" style="background: radial-gradient(ellipse at center, rgba(0, 255, 0, 0.2) 0%, transparent 70%);"></div>
+ </section>
+
+ <script type="module">
+ // Enhanced boot sequence: character-by-character typing + progress bars
+ (() => {
+     const toggleBtn = document.getElementById('hero-toggle');
+     const consoleEl = document.getElementById('hero-console');
+     const contentEl = document.getElementById('hero-console-content');
+     const cursorEl = document.getElementById('hero-console-cursor');
+     const restartBtn = document.getElementById('hero-console-restart');
+     const skipBtn = document.getElementById('hero-console-skip');
+     let presentationContainer = document.getElementById('hero-presentation');
+     const storageKey = 'heroView';
+     const uiLang = (document.documentElement.lang || document.body.getAttribute('lang') || 'en').slice(0,2);
+
+    // Initialize view flag
+    let isConsoleView = localStorage.getItem(storageKey) === 'console';
+
+    // Apply initial visibility immediately (class + display fallback)
+    if (consoleEl) consoleEl.classList.toggle('hidden', !isConsoleView);
+    if (consoleEl) consoleEl.style.display = !isConsoleView ? 'none' : '';
+    if (presentationContainer) presentationContainer.classList.toggle('hidden', isConsoleView);
+    if (presentationContainer) presentationContainer.style.display = isConsoleView ? 'none' : '';
+    if (toggleBtn) toggleBtn.setAttribute('aria-pressed', String(isConsoleView));
+
+    // Defensive: bail out if elements missing
+    if (!toggleBtn || !consoleEl || !contentEl || !cursorEl) {
+        // Show a visible fallback so user can see something
+        console.warn('[Hero] Console elements missing, aborting boot script.');
+        if (consoleEl) {
+            consoleEl.style.color = '#00ff66';
+            consoleEl.textContent = 'Console unavailable';
+        }
+        return;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .typing-animation {
-    opacity: 0;
-    animation: typing 0.5s ease-in forwards;
-  }
-  
-  /* CRT scanline effect */
-  @keyframes scanline {
-    0% {
-      transform: translateY(0);
-    }
-    100% {
-      transform: translateY(100vh);
-    }
-  }
-  
-  /* Glitch effect */
-  @keyframes glitch {
-    0%, 100% {
-      text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-    }
-    25% {
-      text-shadow: -2px 0 5px rgba(255, 0, 0, 0.5), 2px 0 5px rgba(0, 0, 255, 0.5);
-    }
-    50% {
-      text-shadow: 2px 0 5px rgba(255, 0, 0, 0.5), -2px 0 5px rgba(0, 0, 255, 0.5);
-    }
-    75% {
-      text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-    }
-  }
-</style>
+
+    // Inline style fallbacks to ensure visibility even if Tailwind classes aren't applied
+    consoleEl.style.backgroundColor = consoleEl.style.backgroundColor || '#000';
+    consoleEl.style.color = consoleEl.style.color || '#00ff66';
+    consoleEl.style.fontFamily = consoleEl.style.fontFamily || 'monospace';
+    consoleEl.style.whiteSpace = consoleEl.style.whiteSpace || 'pre-wrap';
+    contentEl.style.color = contentEl.style.color || '#00ff66';
+    contentEl.style.fontFamily = contentEl.style.fontFamily || 'monospace';
+
+     // Boot sequences with richer, 90s-like output (strings or progress blocks)
+     const sequences = {
+         gl: [
+             '[BIOS] PhoenixBIOS v1.00',
+             'CPU: 486 DX2 66MHz',
+             {type: 'progress', label: 'Memory test', duration: 1200},
+             'POST: OK',
+             {type: 'progress', label: 'Detecting drives', duration: 1000},
+             'Loading MS-DOS style driver stack...',
+             {type: 'progress', label: 'Network init', duration: 900},
+             'Cargando configuración de usuario...',
+             'Benvido ao meu portafolio!',
+             'Desliza cara abaixo para explorar.'
+         ],
+         es: [
+             '[BIOS] PhoenixBIOS v1.00',
+             'CPU: 486 DX2 66MHz',
+             {type: 'progress', label: 'Prueba de memoria', duration: 1200},
+             'POST: OK',
+             {type: 'progress', label: 'Detectando unidades', duration: 1000},
+             'Cargando pila de drivers...',
+             {type: 'progress', label: 'Inicializando red', duration: 900},
+             'Cargando configuración de usuario...',
+             '¡Bienvenido a mi portafolio!',
+             'Desliza hacia abajo para explorar.'
+         ],
+         en: [
+             '[BIOS] PhoenixBIOS v1.00',
+             'CPU: Intel Pentium 133MHz',
+             {type: 'progress', label: 'Memory test', duration: 1400},
+             'POST: OK',
+             {type: 'progress', label: 'Detecting drives', duration: 1000},
+             'Loading DOS-like driver stack...',
+             {type: 'progress', label: 'Network init', duration: 1000},
+             'Loading user settings...',
+             'Welcome to my portfolio!',
+             'Scroll down to explore.'
+         ],
+         pt: [
+             '[BIOS] PhoenixBIOS v1.00',
+             'CPU: Intel Pentium 133MHz',
+             {type: 'progress', label: 'Teste de memória', duration: 1400},
+             'POST: OK',
+             {type: 'progress', label: 'Detectando unidades', duration: 1000},
+             'Carregando stack de drivers...',
+             {type: 'progress', label: 'Inicializando rede', duration: 900},
+             'Carregando configurações do usuário...',
+             'Bem-vindo ao meu portfólio!',
+             'Role para baixo para explorar.'
+         ],
+     };
+
+     // Utility: sleep
+     const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+     // Manage cancellation of running animation
+     let runId = 0;
+
+     // Make sure console content area has explicit color (in case tailwind classes differ)
+     contentEl.classList.add('text-green-400');
+
+    // Parse presentation texts injected server-side
+    let presentation = {};
+    try { presentation = JSON.parse(consoleEl.dataset.presentation || '{}'); } catch(e) { presentation = {}; }
+
+     // Scroll console to bottom
+     const scrollToBottom = () => {
+         consoleEl.scrollTop = consoleEl.scrollHeight;
+     };
+
+     // Type a line character-by-character
+     const typeLine = async (text, speed = 30, localRunId) => {
+         const lineWrap = document.createElement('div');
+         const span = document.createElement('span');
+         span.style.color = '#00ff66';
+         lineWrap.appendChild(span);
+         contentEl.appendChild(lineWrap);
+         cursorEl.classList.add('animate-blink');
+         for (let i = 0; i < text.length; i++) {
+             if (runId !== localRunId) return; // cancelled
+             span.textContent += text[i];
+             scrollToBottom();
+             await sleep(speed + Math.random() * 40);
+         }
+         cursorEl.classList.remove('animate-blink');
+     };
+
+     // Show a fake progress bar
+     const progressBlock = (label, duration = 1000, localRunId) => {
+         return new Promise(async (resolve) => {
+             const wrapper = document.createElement('div');
+             wrapper.className = 'boot-progress-wrapper';
+             const labelSpan = document.createElement('span');
+             labelSpan.textContent = label + ': ';
+             labelSpan.style.color = '#00ff66';
+             const percentSpan = document.createElement('span');
+             percentSpan.textContent = '0%';
+             percentSpan.style.color = '#00ff66';
+             // Ensure progress elements are readable
+             wrapper.style.color = '#00ff66';
+             wrapper.style.fontFamily = 'monospace';
+             const bar = document.createElement('div');
+             bar.className = 'boot-progress';
+             const inner = document.createElement('div');
+             inner.className = 'boot-progress-bar';
+             bar.appendChild(inner);
+             wrapper.appendChild(labelSpan);
+            wrapper.appendChild(percentSpan);
+            wrapper.appendChild(bar);
+             contentEl.appendChild(wrapper);
+             scrollToBottom();
+
+             const start = Date.now();
+             const tick = () => {
+                 if (runId !== localRunId) return resolve();
+                 const elapsed = Date.now() - start;
+                 const p = Math.min(1, elapsed / duration);
+                 const pct = Math.floor(p * 100);
+                 percentSpan.textContent = pct + '%';
+                 inner.style.width = pct + '%';
+                 scrollToBottom();
+                 if (p < 1) requestAnimationFrame(tick);
+                 else resolve();
+             };
+             requestAnimationFrame(tick);
+         });
+     };
+
+     // Animate entire sequence
+     const runSequence = async (sequence) => {
+         runId += 1;
+         const localRunId = runId;
+         contentEl.innerHTML = '';
+         for (const item of sequence) {
+             if (runId !== localRunId) break; // cancelled
+             if (typeof item === 'string') {
+                 // faster overall typing for snappier effect
+                 await typeLine(item, 8 + Math.random() * 16, localRunId);
+                 await sleep(120 + Math.random() * 80);
+             } else if (item?.type === 'progress') {
+                 await progressBlock(item.label, item.duration || 1000, localRunId);
+                 await sleep(80 + Math.random() * 80);
+             } else {
+                 await sleep(120);
+             }
+         }
+
+         // After boot sequence, show presentation welcome info faster
+         if (runId === localRunId) {
+             await showPresentationInConsole(presentation, localRunId);
+         }
+
+         cursorEl.classList.remove('animate-blink');
+     };
+
+    // Types the presentation (welcome) lines into the console quickly
+    const showPresentationInConsole = async (presentationObj = {}, localRunId) => {
+        if (!presentationObj || Object.keys(presentationObj).length === 0) return;
+        const parts = [];
+        if (presentationObj.title) parts.push(presentationObj.title);
+        if (presentationObj.subtitle) parts.push(presentationObj.subtitle);
+        if (presentationObj.description) parts.push(presentationObj.description);
+        if (presentationObj.cta) parts.push('» ' + presentationObj.cta);
+        for (const p of parts) {
+            if (runId !== localRunId) return; // cancelled
+            await typeLine(p, 6 + Math.random() * 12, localRunId);
+            await sleep(60 + Math.random() * 80);
+        }
+    };
+
+     const startConsole = () => {
+         const seq = sequences[uiLang] || sequences.en;
+         runSequence(seq);
+     };
+
+     // Toggle
+     if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+             isConsoleView = !isConsoleView;
+             console.log('[Hero] toggle clicked, new isConsoleView=', isConsoleView);
+             localStorage.setItem(storageKey, isConsoleView ? 'console' : 'presentation');
+             // when showing, explicitly remove hidden to be robust
+             if (isConsoleView) {
+                 consoleEl.classList.remove('hidden');
+                 consoleEl.style.display = '';
+             } else {
+                 consoleEl.classList.add('hidden');
+                 consoleEl.style.display = 'none';
+             }
+             if (presentationContainer) {
+                 if (isConsoleView) {
+                     presentationContainer.classList.add('hidden');
+                     presentationContainer.style.display = 'none';
+                 } else {
+                     presentationContainer.classList.remove('hidden');
+                     presentationContainer.style.display = '';
+                 }
+             }
+             // update label for clarity
+             try { toggleBtn.textContent = isConsoleView ? 'Presentation' : 'Console'; } catch(e) {}
+             toggleBtn.setAttribute('aria-pressed', String(isConsoleView));
+             if (isConsoleView) startConsole();
+         });
+     }
+
+     if (restartBtn) restartBtn.addEventListener('click', () => {
+         console.log('[Hero] restart clicked');
+         // cancel existing run and restart
+         runId += 1;
+         startConsole();
+     });
+
+     if (skipBtn) skipBtn.addEventListener('click', () => {
+         console.log('[Hero] skip clicked');
+         // cancel and go back to presentation
+         runId += 1;
+         isConsoleView = false;
+         localStorage.setItem(storageKey, 'presentation');
+         consoleEl.classList.add('hidden');
+         consoleEl.style.display = 'none';
+         if (presentationContainer) {
+             presentationContainer.classList.remove('hidden');
+             presentationContainer.style.display = '';
+         }
+         if (toggleBtn) {
+             toggleBtn.setAttribute('aria-pressed', 'false');
+             try { toggleBtn.textContent = 'Console'; } catch(e) {}
+         }
+     });
+
+     // Start automatically if stored preference is console
+     if (isConsoleView) startConsole();
+ })();
+ </script>
+
+ <style>
+ /* Progress bar styles for boot sequence */
+ .boot-progress-wrapper { display:flex; gap:8px; align-items:center; margin-top:6px; font-family:monospace; }
+ .boot-progress { flex:1; height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; margin-left:8px; }
+ .boot-progress-bar { height:100%; width:0; background:linear-gradient(90deg,#00ff66,#00cc99); transition: width 0.1s linear; }
+
+ /* Ensure the cursor is text-based and visible */
+ #hero-console-cursor { color:#00ff66; font-weight:700; margin-left:6px; }
+
+ @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+ .animate-blink { animation: blink 1s step-end infinite; }
+ </style>
