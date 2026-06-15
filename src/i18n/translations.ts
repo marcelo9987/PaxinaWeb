@@ -12,6 +12,9 @@ export const translations = {
             title: 'Marcelo Fort Muñoz',
             subtitle: 'Desenvolvedor e Enxeñeiro de Software',
             description: 'Apaixonado pola tecnoloxía e o desenvolvemento de software. Especializado en múltiples linguaxes de programación e tecnoloxías modernas.',
+            languages: '4 idiomas',
+            technologies: '10+ tecnoloxías e linguaxes de programación',
+            projects: 'Proxectos',
             cta: 'Ver Proxectos'
         },
         about: {
@@ -24,7 +27,7 @@ export const translations = {
         },
         languages: {
             title: 'Idiomas',
-            subtitle: 'Linguaxes que falo e o meu nivel de competencia'
+            subtitle: 'Linguas que falo e o meu nivel de competencia'
         },
         projects: {
             title: 'Proxectos',
@@ -59,6 +62,9 @@ export const translations = {
             title: 'Marcelo Fort Muñoz',
             subtitle: 'Desarrollador e Ingeniero de Software',
             description: 'Apasionado por la tecnología y el desarrollo de software. Especializado en múltiples lenguajes de programación y tecnologías modernas.',
+            languages: '4 idiomas',
+            technologies: '10+ tecnologías y lenguajes de programación',
+            projects: 'Proyectos',
             cta: 'Ver Proyectos'
         },
         about: {
@@ -106,6 +112,9 @@ export const translations = {
             title: 'Marcelo Fort Muñoz',
             subtitle: 'Software Developer & Engineer',
             description: 'Passionate about technology and software development. Specialized in multiple programming languages and modern technologies.',
+            languages: '4 languages',
+            technologies: '10+ technologies and programming languages',
+            projects: 'Projects',
             cta: 'View Projects'
         },
         about: {
@@ -152,12 +161,15 @@ export const translations = {
         hero: {
             title: 'Marcelo Fort Muñoz',
             subtitle: 'Desenvolvedor e Engenheiro de Software',
-            description: 'Apaixonado por tecnologia e desenvolvimento de software. Especializado em múltiplas linguagens de programação e tecnologias modernas.',
+            description: 'Apaixonado por tecnologia e desenvolvimento de software. Especializado em diversas linguagens de programação e tecnologias modernas.',
+            languages: '4 idiomas',
+            technologies: '10+ tecnologias e linguagens de programação',
+            projects: 'Projetos',
             cta: 'Ver Projetos'
         },
         about: {
             title: 'Sobre mim',
-            description: 'Sou um desenvolvedor de software com experiência em múltiplas linguagens e tecnologias. Trabalho em projetos que combinam criatividade e soluções técnicas inovadoras.'
+            description: 'Sou um desenvolvedor de software com experiência em diversas linguagens e tecnologias. Trabalho em projetos que combinam criatividade e soluções técnicas inovadoras.'
         },
         skills: {
             title: 'Competências Técnicas',
