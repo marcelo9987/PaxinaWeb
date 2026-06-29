@@ -4,10 +4,10 @@ Páxina web persoal e profesional internacionalizada construída con Astro e Tai
 
 ## 🌍 Idiomas
 
-- **Galego** (Nativo) - `/`
-- **Español** (Nativo) - `/es`
-- **Inglés** (Avanzado C1) - `/en`
-- **Portugués** (Básico) - `/pt`
+- **Galego**      - `/`
+- **Español**     - `/es`
+- **Inglés**      - `/en`
+- **Portugués**   - `/pt`
 
 ## 🚀 Tecnoloxías
 
