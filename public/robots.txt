@@ -60,4 +60,4 @@ User-agent: *
 Allow: /
 
 # ──────────────────────────────
-Sitemap: https://marcelofort.dev/PaxinaWeb/sitemap-index.xml
+Sitemap: https://www.marcelofortmunoz.gal/sitemap-index.xml
