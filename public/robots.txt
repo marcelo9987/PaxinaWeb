@@ -1,4 +1,4 @@
-# robots.txt — Soluciones Eléctricas Berhila
+# robots.txt — Marcelo  F.M.
 
 # Buscadores (permitidos)
 User-agent: Googlebot
