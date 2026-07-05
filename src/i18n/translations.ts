@@ -6,6 +6,7 @@ export const translations = {
             skills: 'Competencias',
             languages: 'Idiomas',
             projects: 'Proxectos',
+            certifications: 'Certificacións',
             contact: 'Contacto'
         },
         hero: {
@@ -35,6 +36,13 @@ export const translations = {
             viewProject: 'Ver Proxecto',
             viewCode: 'Ver Código'
         },
+        certifications: {
+            title: 'Certificacións',
+            subtitle: 'Formación complementaria e acreditacións obtidas',
+            academic: 'Académica',
+            technical: 'Técnica',
+            verify: 'Verificar credencial'
+        },
         contact: {
             title: 'Contacto',
             subtitle: 'Estou aberto a novas oportunidades e colaboracións',
@@ -56,6 +64,7 @@ export const translations = {
             skills: 'Competencias',
             languages: 'Idiomas',
             projects: 'Proyectos',
+            certifications: 'Certificaciones',
             contact: 'Contacto'
         },
         hero: {
@@ -85,6 +94,13 @@ export const translations = {
             viewProject: 'Ver Proyecto',
             viewCode: 'Ver Código'
         },
+        certifications: {
+            title: 'Certificaciones',
+            subtitle: 'Formación complementaria y acreditaciones obtenidas',
+            academic: 'Académica',
+            technical: 'Técnica',
+            verify: 'Verificar credencial'
+        },
         contact: {
             title: 'Contacto',
             subtitle: 'Estoy abierto a nuevas oportunidades y colaboraciones',
@@ -106,6 +122,7 @@ export const translations = {
             skills: 'Skills',
             languages: 'Languages',
             projects: 'Projects',
+            certifications: 'Certifications',
             contact: 'Contact'
         },
         hero: {
@@ -135,6 +152,13 @@ export const translations = {
             viewProject: 'View Project',
             viewCode: 'View Code'
         },
+        certifications: {
+            title: 'Certifications',
+            subtitle: 'Additional training and accreditations obtained',
+            academic: 'Academic',
+            technical: 'Technical',
+            verify: 'Verify credential'
+        },
         contact: {
             title: 'Contact',
             subtitle: 'I am open to new opportunities and collaborations',
@@ -156,6 +180,7 @@ export const translations = {
             skills: 'Competências',
             languages: 'Idiomas',
             projects: 'Projetos',
+            certifications: 'Certificações',
             contact: 'Contato'
         },
         hero: {
@@ -184,6 +209,13 @@ export const translations = {
             subtitle: 'Alguns dos meus trabalhos e criações',
             viewProject: 'Ver Projeto',
             viewCode: 'Ver Código'
+        },
+        certifications: {
+            title: 'Certificações',
+            subtitle: 'Formação complementar e acreditações obtidas',
+            academic: 'Académica',
+            technical: 'Técnica',
+            verify: 'Verificar credencial'
         },
         contact: {
             title: 'Contato',
