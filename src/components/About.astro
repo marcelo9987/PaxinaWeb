@@ -1,5 +1,6 @@
 ---
 import { translations, type Locale } from '../i18n/translations';
+import { personal } from '../data/personal';
 
 interface Props {
   locale: Locale;
@@ -25,6 +26,14 @@ const t = translations[locale];
           </p>
           <p class="text-green-300 mb-4">
             {t.about.description}
+          </p>
+
+          <div class="flex items-center justify-center mb-4">
+            <img src="/images/logo-cpetig.png" alt="CPETIG logo" class="h-16 w-auto object-contain" />
+          </div>
+
+          <p class="text-green-300 mb-4">
+            <strong class="text-green-500">{t.about.precolexiadoLabel}:</strong> <span class="text-green-300">{personal.precolexiadoNumber || '—'}</span>
           </p>
           <p class="mt-4">
             <span class="text-green-500">$</span> <span class="animate-pulse">_</span>

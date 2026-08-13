@@ -20,7 +20,8 @@ export const translations = {
         },
         about: {
             title: 'Sobre min',
-            description: 'Son un desenvolvedor de software con experiencia en múltiples linguaxes e tecnoloxías. Traballo en proxectos que combinan creatividade e solucións técnicas innovadoras.'
+            description: 'Son un desenvolvedor de software con experiencia en múltiples linguaxes e tecnoloxías. Traballo en proxectos que combinan creatividade e solucións técnicas innovadoras.',
+            precolexiadoLabel: 'Número de precolexiado'
         },
         skills: {
             title: 'Competencias Técnicas',
@@ -78,7 +79,8 @@ export const translations = {
         },
         about: {
             title: 'Sobre mí',
-            description: 'Soy un desarrollador de software con experiencia en múltiples lenguajes y tecnologías. Trabajo en proyectos que combinan creatividad y soluciones técnicas innovadoras.'
+            description: 'Soy un desarrollador de software con experiencia en múltiples lenguajes y tecnologías. Trabajo en proyectos que combinan creatividad y soluciones técnicas innovadoras.',
+            precolexiadoLabel: 'Número de precolexiado'
         },
         skills: {
             title: 'Competencias Técnicas',
@@ -136,7 +138,8 @@ export const translations = {
         },
         about: {
             title: 'About Me',
-            description: 'I am a software developer with experience in multiple languages and technologies. I work on projects that combine creativity and innovative technical solutions.'
+            description: 'I am a software developer with experience in multiple languages and technologies. I work on projects that combine creativity and innovative technical solutions.',
+            precolexiadoLabel: 'Registration number'
         },
         skills: {
             title: 'Technical Skills',
@@ -194,7 +197,8 @@ export const translations = {
         },
         about: {
             title: 'Sobre mim',
-            description: 'Sou um desenvolvedor de software com experiência em diversas linguagens e tecnologias. Trabalho em projetos que combinam criatividade e soluções técnicas inovadoras.'
+            description: 'Sou um desenvolvedor de software com experiência em diversas linguagens e tecnologias. Trabalho em projetos que combinam criatividade e soluções técnicas inovadoras.',
+            precolexiadoLabel: 'Número de precolexiado'
         },
         skills: {
             title: 'Competências Técnicas',
